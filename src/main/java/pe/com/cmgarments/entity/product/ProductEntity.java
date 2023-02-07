@@ -2,6 +2,8 @@ package pe.com.cmgarments.entity.product;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.URL;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -42,7 +44,7 @@ public class ProductEntity  extends BaseEntity implements Serializable {
   @Size(min=8,max=50,message = "El nombre debe de tener como minimo {min} y maximo {max}")
   private String name;
 
-  @Column(name="size", length = 5, nullable = false)
+  @Column(name="size", length = 50, nullable = false)
   @NotEmpty(message = "Debe de ingresar la talla")
   @Size(min=1,max=5,message = "La talla debe de tener como minimo {min} y maximo {max}")
   private String size;
@@ -69,6 +71,10 @@ public class ProductEntity  extends BaseEntity implements Serializable {
   @NotEmpty(message = "Debe de ingresar la descripcion")
   @Size(min=1,max=510,message = "La descripcion debe de tener como minimo {min} y maximo {max}")
   private String description;
+
+  @Column(name="url_img")
+  @URL(message="Debe ingresar una URL")
+  private String urlImg;
 
   @Column(name="state", nullable = false)
   private boolean state;
